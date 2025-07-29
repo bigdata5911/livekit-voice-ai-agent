@@ -103,7 +103,7 @@ Phone Call → Twilio SIP → LiveKit SIP Gateway → Voice Agent → Response P
 
 Regional SIP Configuration:
 • US East: 54.172.60.0, 54.244.51.0
-• US West: 54.171.127.192, 35.156.191.128  
+• US West: 54.171.127.192, 35.156.191.128
 • Europe: 54.171.127.200, 35.156.191.140
 • Asia Pacific: 54.169.127.128, 52.65.191.64
 ```
@@ -111,27 +111,32 @@ Regional SIP Configuration:
 ## How It Works
 
 ### 1. **Connection Establishment**
+
 - Users connect via web browsers, mobile apps, or phone calls
 - LiveKit server handles WebRTC connections and SIP integration
 - Agent automatically detects connection type and optimizes accordingly
 
 ### 2. **Audio Processing Pipeline**
+
 - **Input**: Raw audio from user's microphone or phone
 - **Noise Cancellation**: Krisp AI removes background noise
 - **Turn Detection**: Silero VAD detects when user starts/stops speaking
 - **Speech-to-Text**: Deepgram converts speech to text in real-time
 
 ### 3. **Intelligent Processing**
+
 - **Language Understanding**: OpenAI processes user intent
 - **Function Calling**: Agent can execute tools (weather, time, custom functions)
 - **Context Management**: Maintains conversation history and state
 
 ### 4. **Response Generation**
+
 - **Text Generation**: LLM creates appropriate responses
 - **Text-to-Speech**: ElevenLabs converts text to natural speech
 - **Audio Delivery**: Processed audio sent back to user
 
 ### 5. **Monitoring & Analytics**
+
 - Real-time performance metrics
 - Conversation logging and summaries
 - Usage analytics and optimization insights
@@ -195,6 +200,7 @@ cp .env.example .env.local
 ```
 
 2. **Required Environment Variables:**
+
    ```
    LIVEKIT_URL=your_livekit_server_url
    LIVEKIT_API_KEY=your_api_key
@@ -252,11 +258,13 @@ lk cloud auth
 ### Twilio Configuration
 
 1. **Create Twilio Resources:**
+
    - Sign up for a Twilio account
    - Purchase a phone number
    - Create a new SIP trunk in the Twilio Console
 
 2. **Configure SIP Trunk:**
+
    - Navigate to: Elastic SIP Trunking → SIP Trunks → Create
    - Add Origination URI: `<YOUR_LIVEKIT_SIP_URI>;transport=tcp`
    - Associate your phone number with priority 1, weight 1
@@ -269,7 +277,7 @@ lk cloud auth
 lk sip inbound create inbound-trunk.json
 ```
 
-   **Create Dispatch Rule:**
+**Create Dispatch Rule:**
 
 ```bash
 lk sip dispatch create dispatch-rule.json
@@ -290,6 +298,11 @@ Update `inbound-trunk.json` with appropriate Twilio SIP signaling IP addresses f
 ## Support
 
 For issues and questions:
+
 - Check the [LiveKit Documentation](https://docs.livekit.io/)
 - Review existing GitHub issues
 - Contact support through your LiveKit Cloud dashboard
+
+## Reference URL to set up configuration
+
+https://github.com/cycle-sync-ai/livekit-voice-ai-agent-setup
